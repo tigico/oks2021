@@ -12,11 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		
 
 		if ( 'post' === get_post_type() ) :
 			?>
@@ -24,6 +20,7 @@
 				<?php
 				oks2021_posted_on();
 				oks2021_posted_by();
+				oks2021_entry_footer();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -33,6 +30,11 @@
 
 	<div class="entry-content">
 		<?php
+		if ( is_singular() ) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
+		else :
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		endif;
 		the_content(
 			sprintf(
 				wp_kses(

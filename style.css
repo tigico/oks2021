@@ -1,9 +1,9 @@
 /*!
 Theme Name: oks2021
 Theme URI: http://underscores.me/
-Author: Underscores.me
+Author: Tilman Vogler
 Author URI: http://underscores.me/
-Description: Description
+Description: The 2021 OKS website.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
@@ -77,9 +77,9 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-body {
-	margin: 0;
-}
+ body {
+	 margin: 0;
+ }
 
 /**
  * Render the `main` element consistently in IE.
@@ -92,10 +92,12 @@ main {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
+
+ /* CHANGED! */
+/* h1 {
 	font-size: 2em;
 	margin: 0.67em 0;
-}
+} */
 
 /* Grouping content
 	 ========================================================================== */
@@ -403,8 +405,8 @@ select,
 optgroup,
 textarea {
 	color: #404040;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 1rem;
+	font-family: Helvetica, Georgia, Serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 0.9rem;
 	line-height: 1.5;
 }
 
@@ -648,20 +650,35 @@ textarea {
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
-	display: block;
-	width: 100%;
+	/* display: block; */
+	grid-column-start: 3;
+	grid-column-end: 6;
+	grid-row-start: 2;
+	grid-row-end: 4;
+	border: 1px dotted black;
+}
+
+#menu-title {
+	font-size: 1.3em;
+	text-align: center;
+	/* line-height: 0.5em; */
+	margin-bottom: 0.5em;
+	/* margin-left: -8em */
 }
 
 .main-navigation ul {
-	display: none;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+	line-height: 2em;
+	/* padding-left: 8em; */
+	/* padding-top: 5em; */
 }
 
 .main-navigation ul ul {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
+	float: right;
 	position: absolute;
 	top: 100%;
 	left: -999em;
@@ -695,6 +712,7 @@ textarea {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+	color: inherit;
 }
 
 /* Small menu. */
@@ -709,9 +727,9 @@ textarea {
 		display: none;
 	}
 
-	.main-navigation ul {
+	/* .main-navigation ul {
 		display: flex;
-	}
+	} */
 }
 
 .site-main .comment-navigation,
@@ -758,7 +776,8 @@ textarea {
 
 .page-content,
 .entry-content,
-.entry-summary {
+.entry-summary,
+.entry-meta {
 	margin: 1.5em 0 0;
 }
 
@@ -766,6 +785,33 @@ textarea {
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+article {
+	background-color: lightgray;
+	display: flex;
+	flex-direction: wrap;
+	flex-wrap: wrap;
+}
+
+span.posted-on,
+span.byline,
+span.cat-links,
+span.tags-links {
+    display: block;
+}
+
+header.entry-header {
+	width: 25%;
+}
+
+div.entry-content {
+	width: 75%
+}
+
+footer.entry-footer {
+	width: 70%;
+}
+
 
 /* Comments
 --------------------------------------------- */
@@ -785,6 +831,14 @@ textarea {
 
 .widget select {
 	max-width: 100%;
+}
+
+div.textwidget {
+	line-height: 0.5em;
+	font-size: 0.9em;
+	position: fixed;
+	bottom: 3vh;
+	padding-left: 1vw;
 }
 
 /* Media
@@ -967,3 +1021,141 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+
+
+body {
+	max-width: 1200px;
+	margin: 1vh auto 0vh auto;
+}
+
+header#masthead.site-header {
+	display: grid;
+	grid-template-columns: 10% 22.5% 22.5% 22.5% 22.5%;
+	grid-template-rows: auto auto auto;
+	border: 0px dotted red;
+	height: 20vh;
+}
+
+.site-title a {
+	text-decoration: none;
+	color: inherit
+}
+
+/* p.site-title {
+	font-size: 2em
+} */
+
+
+div.site-branding {
+	border: 1px dotted green;
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: 4;
+	text-align: center;
+}
+
+div#page.site {
+	padding: 0vh;
+	border: 1px dotted black;
+}
+
+form.search-form {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	text-align: right;
+	margin-right: 3vw;
+}
+
+input:focus::placeholder {
+	color: transparent;
+  }
+
+
+.site-footer {
+	margin-left: 10%;
+	width: 90%;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+
+
+#main-wrapper {
+	display: flex;
+	flex-direction: row;
+
+}
+/* .site-left {
+	width: 10%;
+	border: 1px dotted black;
+	
+} */
+
+.site-main {
+	/* width: 90%; */
+	/* kann raus, weil #primary.site-main 10% rüberwandert */
+}
+
+#primary.site-main {
+	margin-left: 10%;
+	width: 90%;
+}
+
+/* 
+@media screen and (max-width: 1300px) {
+	body {
+	  max-width: 900px;
+	  margin: 0 auto;
+	}
+  } */
+
+
+@media screen and (max-width: 768px) {
+    body {
+        margin: 0 1em;
+    }
+	header#masthead.site-header {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: auto auto auto;
+		border: 3px dotted red;
+		margin-top: 1em;
+		height: 200px;
+	}
+	div.site-branding {
+		border: 2px dotted green;
+		grid-column-start: 1;
+		grid-column-end: 1;
+		text-align: center;
+	}
+	.main-navigation ul {
+		display: none;
+	}
+	#menu-title {
+		display: none
+	}
+
+	.menu-toggle {
+		display: block;
+	}
+
+	#main-wrapper {
+		flex-direction: column;
+	}
+
+
+	.site-left {
+		order: 1;
+		text-align: center;
+	}
+	
+	div.textwidget {
+		line-height: 0.5em;
+		font-size: 0.9em;
+		position: relative;
+		bottom: 0vh;
+		padding-left: 1vw;
+	}
+}
+

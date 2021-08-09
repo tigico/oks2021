@@ -14,9 +14,11 @@
 
 get_header();
 ?>
-
+<div id="main-wrapper">
+	<div class="site-left"><?php get_sidebar(); ?></div>
 	<main id="primary" class="site-main">
 
+	<?php get_template_part( 'loop' ); ?>
 		<?php
 		if ( have_posts() ) :
 
@@ -51,6 +53,8 @@ get_header();
 		?>
 
 	</main><!-- #main -->
+	
+	</div>
 
 <?php
 get_sidebar();

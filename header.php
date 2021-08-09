@@ -15,6 +15,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Bootstrap CSS -->
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
@@ -24,7 +28,7 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'oks2021' ); ?></a>
-
+	
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
@@ -35,7 +39,7 @@
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			endif;
 			$oks2021_description = get_bloginfo( 'description', 'display' );
@@ -46,7 +50,8 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'oks2021' ); ?></button>
+			<button  class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Rubriken', 'oks2021' ); ?></button>
+			<p id="menu-title">Rubriken</p>
 			<?php
 			wp_nav_menu(
 				array(
@@ -56,4 +61,6 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
+		<?php get_search_form(); ?>
+		
 	</header><!-- #masthead -->
