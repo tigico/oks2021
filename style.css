@@ -3,7 +3,7 @@ Theme Name: oks2021
 Theme URI: http://underscores.me/
 Author: Tilman Vogler
 Author URI: http://underscores.me/
-Description: The 2021 OKS website.
+Description: The 2023 OKS website.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
@@ -35,6 +35,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Forms
 ## Layouts
 # Components
+	- Header
 	- Navigation
 	- Posts and pages
 	- Comments
@@ -404,7 +405,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color: #2e2e2e;
 	font-family: Helvetica, Georgia, Serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 0.9rem;
 	line-height: 1.5;
@@ -475,6 +476,41 @@ big {
 --------------------------------------------- */
 body {
 	background: #fff;
+	max-width: 1400px;
+	margin: 1vh auto 0vh auto;
+}
+
+#page {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+header#masthead.site-header {
+	width: 80vw;
+	max-width: 1180px;
+	height: 14vh;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+}
+/* MOVE THIS BACK TO HEADER SECTION */
+
+#entirecontent, .site-main {
+	width: 100vw;
+	max-width: 1400px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.container, .post {
+	max-width: 1200px;
+	width: 80vw;
+}
+
+.divsides {
+	min-width: 100px;
+	z-index: 1;
 }
 
 hr {
@@ -647,23 +683,127 @@ textarea {
 # Components
 --------------------------------------------------------------*/
 
-/* Navigation
+
+/* Header
 --------------------------------------------- */
-.main-navigation {
-	/* display: block; */
-	grid-column-start: 3;
-	grid-column-end: 6;
-	grid-row-start: 2;
-	grid-row-end: 4;
-	border: 1px dotted black;
+
+
+div.site-branding {
+	justify-self: start;
 }
 
-#menu-title {
+.main-navigation {
+	justify-self: center;
+}
+
+form.search-form {
+	justify-self: end;
+}
+
+
+/* div.site-branding {
+	grid-column: 2/4;
+	grid-row: 1/4;
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto;
+}
+
+.custom-logo-link {
+	grid-column: 1/2;
+	grid-row: 1/4;
+	background-color: lightgrey;
+	width: 150px;
+	height: 150px;
+}
+
+.site-title {
+	grid-column: 2/4;
+	grid-row: 2/3
+}
+
+.site-description {
+	grid-column: 2/4;
+	grid-row: 3/4;
+}
+
+.main-navigation {
+	grid-column: 4/6;
+	grid-row: 2/3;
+}
+
+form.search-form {
+	grid-column: 4/6;
+	grid-row: 2/3;
+	text-align: right;
+	margin-right: 1vw;
+} */
+
+.site-title a {
+	text-decoration: none;
+	color: inherit
+}
+
+div#page.site {
+	padding: 0vh;
+}
+
+input:focus::placeholder {
+	color: transparent;
+  }
+
+
+  /* @media (max-width: 990px) {
+	
+} */
+
+
+/* Navigation
+--------------------------------------------- */
+
+#primary-menu {
+	backdrop-filter: blur(10px);
+	background: hsla(0, 100%, 100%, 0.45);
+	transform: translateY(-100%);
+	transition: transform 0.5s ease-in-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	z-index: 1;
+	margin: 0px;
+	padding: 0px;
+}
+
+#primary-menu.open {
+	transform: translateY(0);
+}
+
+#menu-item {
+	text-decoration: none;
+}
+
+.main-navigation ul {
+	list-style: none;
+	line-height: 3
+}
+
+.main-navigation a {
+	text-decoration: none;
+	color: inherit;
+}
+
+
+/* #menu-title {
 	font-size: 1.3em;
 	text-align: center;
-	/* line-height: 0.5em; */
 	margin-bottom: 0.5em;
-	/* margin-left: -8em */
 }
 
 .main-navigation ul {
@@ -671,9 +811,7 @@ textarea {
 	grid-template-columns: auto auto auto auto;
 	list-style: none;
 	margin: 0;
-	line-height: 2em;
-	/* padding-left: 8em; */
-	/* padding-top: 5em; */
+	line-height: 1.5em;
 }
 
 .main-navigation ul ul {
@@ -713,31 +851,14 @@ textarea {
 	display: block;
 	text-decoration: none;
 	color: inherit;
-}
-
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-
-	.menu-toggle {
-		display: none;
-	}
-
-	/* .main-navigation ul {
-		display: flex;
-	} */
-}
+} */
 
 .site-main .comment-navigation,
 .site-main
 .posts-navigation,
 .site-main
 .post-navigation {
-	margin: 0 0 1.5em;
+	margin: 0 0 11.5em;
 }
 
 .comment-navigation .nav-links,
@@ -758,6 +879,110 @@ textarea {
 	text-align: end;
 	flex: 1 0 50%;
 }
+
+
+
+/* Small menu. */
+/* .menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+@media screen and (min-width: 768px) {
+
+	.menu-toggle {
+		display: none;
+	}
+
+	/* .main-navigation ul {
+		display: flex;
+	} */
+
+
+
+
+	
+/* .menu-toggle {
+	display: none;
+} */
+
+
+	.menu-toggle, .main-navigation.toggled ul {
+	display: block;
+	}
+	
+	/* button.menu-toggle {
+		border: 1px solid;
+		border-color: #ccc #ccc #bbb;
+	 	border-radius: 90px;
+	 	color: rgba(0, 0, 0, 0.8);
+		line-height: 1;
+		padding: 1.2em 0.5em 1.2em;
+		line-height: 0.5em;
+		font-size: 0.9em;
+		z-index: 1;
+		position: fixed;
+
+	} */
+
+	
+	.main-navigation ul {
+		display: none;
+	}
+	#menu-title {
+		display: none;
+	}
+
+
+
+@media (max-width: 768px) {
+	button.menu-toggle {
+		position: fixed;
+		bottom: 4vh;
+		left: 3vh;
+		padding-left: 1vw;
+	}
+}
+
+button.menu-toggle {
+	background: none;
+	border: none;
+	position: relative;
+	z-index: 2;
+}
+
+#nav-icon1 span{
+	display: block;
+	width: 2rem;
+	height: 2px;
+	margin: 6px 0;
+	background-color: black;
+	border-radius: 9px;
+}
+	
+primary-menu.span {
+	  display: block;
+	  width: 2rem;
+	  height: 2px;
+	  margin: 6px 0;
+	  /* background-color: $secondary; */
+	  transition: transform 0.1s linear;
+}
+	
+.active span {
+		transform: rotate(-45deg);
+	  }
+		
+	.active span:first-child {
+		  transform: translateY(8px) rotate(45deg);
+		}
+		
+		.active span:last-child {
+		  transform: translateY(-8px) rotate(-45deg);
+		}
+	
+  
+  
 
 /* Posts and pages
 --------------------------------------------- */
@@ -839,6 +1064,19 @@ div.textwidget {
 	position: fixed;
 	bottom: 3vh;
 	padding-left: 1vw;
+}
+
+@media (max-width: 990px) {
+	div.textwidget {
+		display: none;
+	/* line-height: 0.5em;
+	font-size: 0.9em;
+	position: fixed;
+	top: 3vh;
+	padding-left: 1vw;
+	display: flex;
+    justify-content: space; */
+	}
 }
 
 /* Media
@@ -1014,93 +1252,28 @@ div.textwidget {
 	margin-bottom: 1.5em;
 }
 
-.aligncenter {
+/* .aligncenter {
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1.5em;
-}
-
-
-
-body {
-	max-width: 1200px;
-	margin: 1vh auto 0vh auto;
-}
-
-header#masthead.site-header {
-	display: grid;
-	grid-template-columns: 10% 22.5% 22.5% 22.5% 22.5%;
-	grid-template-rows: auto auto auto;
-	border: 0px dotted red;
-	height: 20vh;
-}
-
-.site-title a {
-	text-decoration: none;
-	color: inherit
-}
-
-/* p.site-title {
-	font-size: 2em
 } */
 
-
-div.site-branding {
-	border: 1px dotted green;
-	grid-column-start: 2;
-	grid-row-start: 1;
-	grid-row-end: 4;
-	text-align: center;
-}
-
-div#page.site {
-	padding: 0vh;
-	border: 1px dotted black;
-}
-
-form.search-form {
-	grid-column-start: 4;
-	grid-column-end: 6;
-	text-align: right;
-	margin-right: 3vw;
-}
-
-input:focus::placeholder {
-	color: transparent;
-  }
-
-
 .site-footer {
-	margin-left: 10%;
-	width: 90%;
 	text-align: center;
 	font-size: 0.8em;
 }
-
-
-
+/* 
 #main-wrapper {
 	display: flex;
 	flex-direction: row;
-
-}
-/* .site-left {
-	width: 10%;
-	border: 1px dotted black;
-	
 } */
 
-.site-main {
-	/* width: 90%; */
-	/* kann raus, weil #primary.site-main 10% rüberwandert */
-}
-
-#primary.site-main {
+/* #primary.site-main {
 	margin-left: 10%;
 	width: 90%;
-}
+} */
 
 /* 
 @media screen and (max-width: 1300px) {
@@ -1111,51 +1284,81 @@ input:focus::placeholder {
   } */
 
 
-@media screen and (max-width: 768px) {
-    body {
-        margin: 0 1em;
-    }
-	header#masthead.site-header {
-		display: grid;
-		grid-template-columns: auto auto auto;
-		grid-template-rows: auto auto auto;
-		border: 3px dotted red;
-		margin-top: 1em;
-		height: 200px;
-	}
-	div.site-branding {
-		border: 2px dotted green;
-		grid-column-start: 1;
-		grid-column-end: 1;
-		text-align: center;
-	}
-	.main-navigation ul {
-		display: none;
-	}
-	#menu-title {
-		display: none
-	}
-
-	.menu-toggle {
-		display: block;
-	}
-
-	#main-wrapper {
-		flex-direction: column;
-	}
 
 
-	.site-left {
-		order: 1;
-		text-align: center;
+
+/* .home .entry {
+	background: #f8f9fa;
+	margin: 0 1.5% 30px !important;
+	padding: 3%;
+  	width: 100%;  
+} */
+
+/* 3 Up on devices ipad portrait plus */
+/* @media only screen and (min-width: 768px) { */
+	/* .home .entry {
+	width: 30%;  
 	}
-	
-	div.textwidget {
-		line-height: 0.5em;
-		font-size: 0.9em;
-		position: relative;
-		bottom: 0vh;
-		padding-left: 1vw;
-	}
+} */
+
+
+
+.js-masonry {
+	margin-top: 1%;
+	font-size: 0.95em;
+  }
+
+.masonry-tile {
+	width: calc(100%/3);
+	padding: 10px;
+	/* color: #636363; */
+	/* float: left;	 */
+	margin-bottom: 2%;
 }
 
+.masonry-tile a{
+	text-decoration: none;
+    color: inherit;
+}
+
+.masonry-tile:hover {
+	background-color: antiquewhite
+}
+
+.masonry-tile h2 {
+		color: black;
+}
+
+.masonry-tile .category_date {
+	color: #636363;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+
+
+@media (max-width: 990px) {
+	.container {
+		margin: 0 2% 0 2%;
+	}
+	
+	.js-masonry {
+		position: relative;
+		
+	}
+
+	.masonry-tile {
+			width: 50%
+		}
+	
+}
+
+@media (max-width: 768px) {
+	.masonry-tile {
+		width: 100%;
+		/* font-size: 0.8em; */
+	}
+
+}

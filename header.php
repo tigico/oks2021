@@ -15,10 +15,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Bootstrap CSS -->
-	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
@@ -50,7 +46,11 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button  class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Rubriken', 'oks2021' ); ?></button>
+		<label id="nav-icon1" for="nav-menu1"><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label><?php esc_html_e( '', 'oks2021' ); ?></button>
 			<p id="menu-title">Rubriken</p>
 			<?php
 			wp_nav_menu(

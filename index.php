@@ -1,61 +1,28 @@
 <?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package oks2021
- */
+get_header();?>
 
-get_header();
-?>
-<div id="main-wrapper">
-	<div class="site-left"><?php get_sidebar(); ?></div>
-	<main id="primary" class="site-main">
-
-	<?php get_template_part( 'loop' ); ?>
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-	
-	</div>
+<div id="entirecontent">
+    <div class="divsides">
+    <?php
+    get_sidebar();?>
+    </div>
+    
+    <div class="container">
+        <?php get_template_part('template-parts/masonry','index');?>
+    </div>
+    
+    <div class="divsides">
+    </div>
+</div>
 
 <?php
-get_sidebar();
-get_footer();
+get_footer();?>
+
+<!-- put another div around everything, control size here, give percentage and max size like 1200px. if that div gets to small then switch to mobile mode 
+put sidebar above right at the top out of the main div
+maybe put another empty div afterwards and give it the same class as the first. then give them the same class so I can control them. give them a fixed width and make disappear on mobile
+give main body max width of 1200px and sides a min width
+use flexbox to fix the space-filling issues (better than using percentages)
+
+to fix the padding issue with the tiles, try and add padding in the header as well to line it up
+-->

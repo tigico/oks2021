@@ -34,6 +34,8 @@
 	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
 	button.addEventListener( 'click', function() {
 		siteNavigation.classList.toggle( 'toggled' );
+		document.querySelector('button.menu-toggle').classList.toggle('active');
+		document.querySelector('#primary-menu').classList.toggle('open');
 
 		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
 			button.setAttribute( 'aria-expanded', 'false' );
